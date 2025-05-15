@@ -88,10 +88,12 @@ class PointNet2ClassificationSSG(pl.LightningModule):
 
         self.fc_layer = nn.Sequential(
             nn.Linear(1024, 512, bias=False),
-            nn.BatchNorm1d(512),
+            # nn.BatchNorm1d(512),
+            nn.InstanceNorm1d(512),
             nn.ReLU(True),
             nn.Linear(512, 256, bias=False),
-            nn.BatchNorm1d(256),
+            # nn.BatchNorm1d(256),
+            nn.InstanceNorm1d(256),
             nn.ReLU(True),
             nn.Dropout(0.5),
             nn.Linear(256, 40),

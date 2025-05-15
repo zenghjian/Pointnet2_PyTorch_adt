@@ -56,7 +56,8 @@ class PointNet2SemSegSSG(PointNet2ClassificationSSG):
 
         self.fc_lyaer = nn.Sequential(
             nn.Conv1d(128, 128, kernel_size=1, bias=False),
-            nn.BatchNorm1d(128),
+            # nn.BatchNorm1d(128),
+            nn.InstanceNorm1d(128),
             nn.ReLU(True),
             nn.Dropout(0.5),
             nn.Conv1d(128, 13, kernel_size=1),
